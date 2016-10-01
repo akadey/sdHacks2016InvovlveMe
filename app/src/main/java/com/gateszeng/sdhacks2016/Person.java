@@ -7,20 +7,28 @@ import java.util.ArrayList;
  */
 
 public class Person {
-    String firstName, lastName;
+    String firstLastName;
     String homePhone, cellPhone, workPhone;
     String houseAddress;
     String emailAddress;
 
-    public Person(String fName, String lName) {
-        firstName = fName;
-        lastName = lName;
+    public Person(String flName) {
+        firstLastName = flName;
+    }
+
+    public Person(String pName, String hPhone, String cPhone,
+                  String wPhone, String hAddress,String eAddress) {
+        firstLastName = pName;
+        homePhone = hPhone;
+        cellPhone = cPhone;
+        workPhone = wPhone;
+        houseAddress = hAddress;
+        emailAddress = eAddress;
     }
 
     /* Getters & Setters */
-    public String getFirstName() { return firstName; }
+    public String getfirstLastName() { return firstLastName; }
 
-    public String getLastName() { return lastName; }
 
     public String getHomePhone() { return homePhone; }
 
@@ -32,9 +40,9 @@ public class Person {
 
     public String getEmailAddress() { return emailAddress; }
 
-    public void setFirstName(String fname) { firstName = fname; }
+    public void setFirstLastName(String pname) { firstLastName = pname; }
 
-    public void setLastName(String lName) { lastName = lName; }
+
 
     public void setHomePhone(String num) { homePhone = num; }
 
