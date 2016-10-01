@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "850064718866",
+    "project_id": "firebase-sdhacks2016"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850064718866:android:f11b78569879304b",
+        "android_client_info": {
+          "package_name": "com.gateszeng.sdhacks2016"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850064718866-orq1t3r3rn5m4j00io3h7l1ufqa75j3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gateszeng.sdhacks2016",
+            "certificate_hash": "92812A2E457CD1ADBCC1C3B8079AA455BB7C177C"
+          }
+        },
+        {
+          "client_id": "850064718866-qugp75q2u5shudvlmbri67ssaukcdasq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPQhUWJrTZFc7CC0AwmMCrvUAVRa7aXJM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
