@@ -8,4 +8,26 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Big_HDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
+    <style name="HDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">5dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
+    <style name="VDivider">
+        <item name="android:layout_width">5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">?android:attr/listDivider</item>
+        <item name="android:visibility">invisible</item>
+
+    </style>
+
 </resources>

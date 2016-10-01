@@ -24,7 +24,7 @@ public class Person {
 
     public String getHomePhone() { return homePhone; }
 
-    public String getCellPhonePhone() { return cellPhone; }
+    public String getCellPhone() { return cellPhone; }
 
     public String getWorkPhone() { return workPhone; }
 
