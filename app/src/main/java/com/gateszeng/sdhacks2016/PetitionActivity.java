@@ -13,7 +13,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 import java.util.ArrayList;
 
+import com.firebase.client.Firebase;
+
 public class PetitionActivity extends AppCompatActivity {
+    //change
+    Firebase rootRef = new Firebase("https://sdhacks2016-11cfe.firebaseio.com/");
+
+
 
     private String userName;
     private String userEmail;
@@ -100,5 +106,18 @@ public class PetitionActivity extends AppCompatActivity {
         {
             System.out.println("Exception: " + ex);
         }
+        setContentView(R.layout.activity_create_petition);
+
+
+        String emergencyPost = "";
+        String authorPost = "";
+
+
+        Firebase postsRef = rootRef.child("posts");
+        Firebase currAuthor = postsRef.child(authorPost);
+
+
+
+        currAuthor.child("post").setValue(emergencyPost);
     }
 }
