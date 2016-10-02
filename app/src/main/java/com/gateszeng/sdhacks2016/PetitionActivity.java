@@ -14,7 +14,7 @@ public class PetitionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_input);
+        setContentView(R.layout.activity_create_petition);
 
 
         String emergencyPost = "";
