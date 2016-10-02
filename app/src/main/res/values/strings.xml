@@ -14,4 +14,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="signpetition">"Sign Petition"</string>
+    <string name="loading">"Loading</string>
+    <string name="signout">"Sign Out"</string>
+    <string name="revokeaccess">Disconnect Account</string>
 </resources>

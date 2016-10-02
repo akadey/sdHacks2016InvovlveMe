@@ -10,4 +10,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gateszeng.sdhacks2016.PetitionActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/LL"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="visible">
+
+
+        <TextView
+            android:text="@string/loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/petitiondescription"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <Button
+            android:text="@string/signpetition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/goToSignatureButton"
+            style="@style/Widget.AppCompat.Button"
+            android:elevation="0dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:onClick="goToDocuSign" />
+    </LinearLayout>
 </RelativeLayout>
