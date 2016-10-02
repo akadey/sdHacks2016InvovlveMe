@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             GoogleSignInAccount acct = result.getSignInAccount();
             Intent i = new Intent();
             i.putExtra("googleaccount", acct);
+            startActivity(new Intent(this, MainActivity.class));
             //mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
             //updateUI(true);
         }
