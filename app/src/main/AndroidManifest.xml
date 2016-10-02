@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gateszeng.sdhacks2016">
 
+
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    
+>>>>>>> 7a3e756aa1eab8e5cb7f7af836b3476c98aa368a
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -23,11 +27,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".ProfileInputActivity" />
-        <activity android:name=".EmergencyPostActivity" />
+
         <activity android:name=".MainActivity" />
         <activity android:name=".PetitionActivity" />
         <activity android:name=".InfoPetitionActivity"></activity>
+
+        <activity android:name=".CreatePetitionActivity" />
+
+
+
     </application>
 
 </manifest>

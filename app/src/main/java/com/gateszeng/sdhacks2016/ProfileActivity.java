@@ -20,6 +20,11 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        getActionBar().setDisplayShowTitleEnabled(false);
+
+        if(currPerson.getHouseAddress().isEmpty()) {
+
+        }
     }
 
     public void gotoHome(View v) {
