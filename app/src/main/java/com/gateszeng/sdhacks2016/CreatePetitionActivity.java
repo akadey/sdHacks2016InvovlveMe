@@ -1,6 +1,7 @@
 package com.gateszeng.sdhacks2016;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,7 +28,7 @@ public class CreatePetitionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_petition);
-        getActionBar().setDisplayShowTitleEnabled(false);
+        //getActionBar().setDisplayShowTitleEnabled(false);
 
         petitionName = (EditText) findViewById(R.id.petition_name);
         petitionDescription = (EditText) findViewById(R.id.petition_description);
@@ -45,6 +46,7 @@ public class CreatePetitionActivity extends AppCompatActivity {
                         petitionDescription.getText().toString(), name, 0,
                         System.currentTimeMillis());
                 pushToFirebase(p);
+                backToMainAct();
             }
 
         });
@@ -53,5 +55,10 @@ public class CreatePetitionActivity extends AppCompatActivity {
     private void pushToFirebase(Petition p) {
         Firebase collegeRef = rootRef.child(college);
         collegeRef.push().setValue(p);
+    }
+
+    private void backToMainAct() {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 }

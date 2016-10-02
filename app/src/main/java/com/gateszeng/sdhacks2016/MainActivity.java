@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         college = sharedPreferences.getString("college", "");
         currRef = rootRef.child(college);
+        petitionArrayList = new ArrayList<>();
 
 
         currRef.addValueEventListener(new ValueEventListener() {
@@ -59,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(this, R.layout.activity_listview, petitionArrayList);
 
         ListView listView = (ListView) findViewById(R.id.petition_list);
-        listView.setAdapter(adapter);
+        if(listView != null && adapter != null) {
+            listView.setAdapter(adapter);
+        }
 
 /*
         Class cl = Petition.class;

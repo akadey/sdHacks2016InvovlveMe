@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
             
 
-            Intent i = new Intent(this, PetitionActivity.class);
+            Intent i = new Intent(this, CreatePetitionActivity.class);
             i.putExtra("googleaccount", acct);
             i.putExtra("petitiondescription", "test description@@@");
             startActivity(i);
@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
-
+                        Log.d(TAG, "Signout " + status);
                     }
                 });
     }

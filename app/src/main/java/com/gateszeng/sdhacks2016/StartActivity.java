@@ -27,9 +27,11 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void checkLogin() {
+        startActivity(new Intent(this, LoginActivity.class));
+        Log.d("fuck", "got past login");
         if (!sharedPreferences.getString("name", "fail").equals("fail")) {
             Log.d("successful sharedprefs", "gotoMain");
-            startActivity(new Intent(this, MainActivity.class));
+            //startActivity(new Intent(this, MainActivity.class));
         }
         else {
             Log.d("failed sharedprefs", "gotoLogin");

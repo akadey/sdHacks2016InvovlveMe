@@ -35,7 +35,9 @@ public class PetitionActivity extends AppCompatActivity {
 
         // Get the petition description from the extra and set the text view's description
         petitiondesc = getIntent().getStringExtra("petitiondescription");
-        ((TextView)findViewById(R.id.petitiondescription)).setText(petitiondesc);
+        if(petitiondesc != null) {
+            ((TextView) findViewById(R.id.petitiondescription)).setText(petitiondesc);
+        }
 
         // Wait to show layout until its loaded
         ((LinearLayout)findViewById(R.id.LL)).setVisibility(View.VISIBLE);

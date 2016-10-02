@@ -18,7 +18,8 @@
         <activity android:name=".CreatePetitionActivity" />
         <activity android:name=".PetitionActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".StartActivity"
+        <activity
+            android:name=".StartActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,9 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InfoPetitionActivity"></activity>
-
-
+        <activity android:name=".InfoPetitionActivity" />
+        <activity android:name=".CreatePetitionAct"></activity>
     </application>
 
 </manifest>
