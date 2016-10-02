@@ -22,7 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".CreatePetitionActivity" />
         <activity android:name=".PetitionActivity"></activity>
         <activity android:name=".MainActivity"></activity>
