@@ -27,7 +27,21 @@
         android:layout_below="@+id/sign_out_button"
         android:layout_alignLeft="@+id/sign_out_button"
         android:layout_alignStart="@+id/sign_out_button"
-        android:layout_marginTop="33dp" />
+        android:layout_marginTop="33dp"
+        android:onClick="revokeAccess" />
+
+    <Button
+        android:text="@string/signout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:id="@+id/sign_out_button"
+        android:layout_below="@+id/sign_in_button"
+        android:layout_alignLeft="@+id/sign_in_button"
+        android:layout_alignStart="@+id/sign_in_button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:onClick="signOut" />
 
     <Button
         android:text="@string/signout"

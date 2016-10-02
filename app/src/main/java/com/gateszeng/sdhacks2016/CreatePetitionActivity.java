@@ -19,6 +19,7 @@ public class CreatePetitionActivity extends AppCompatActivity {
     EditText petitionName, petitionDescription;
     Button submitButton;
     String name, email, college;
+    long time;
 
     SharedPreferences sharedPreferences;
 
@@ -42,9 +43,10 @@ public class CreatePetitionActivity extends AppCompatActivity {
 
         submitButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
+                time = System.currentTimeMillis();
                 Petition p = new Petition(petitionName.getText().toString(),
                         petitionDescription.getText().toString(), name, 0,
-                        System.currentTimeMillis());
+                        time);
                 pushToFirebase(p);
                 backToMainAct();
             }
@@ -54,7 +56,7 @@ public class CreatePetitionActivity extends AppCompatActivity {
 
     private void pushToFirebase(Petition p) {
         Firebase collegeRef = rootRef.child(college);
-        collegeRef.push().setValue(p);
+        collegeRef.child(time+"").setValue(p);
     }
 
     private void backToMainAct() {

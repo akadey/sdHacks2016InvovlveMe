@@ -4,12 +4,13 @@ package com.gateszeng.sdhacks2016;
  * Created by gates on 10/1/2016.
  */
 
-public class Petition<T> {
+public class Petition {
     private String title;
     private String description;
     private String creator;
     private int votes;
     private long time;
+    private String key;
 
     public Petition(String title, String description, String creator, int votes, long time) {
         this.title = title;
@@ -17,6 +18,14 @@ public class Petition<T> {
         this.creator = creator;
         this.votes = votes;
         this.time = time;
+        this.key = "";
+    }
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getTitle() {
