@@ -94,27 +94,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Log.d("name", result.getSignInAccount().getDisplayName());
             GoogleSignInAccount acct = result.getSignInAccount();
 
-            final String schoolName = acct.getEmail().substring(acct.getEmail().indexOf('@'));
+            String schoolName = acct.getEmail().substring(acct.getEmail().indexOf('@') + 1);
             Log.d(TAG, "LoginActivity: " + schoolName.contains(".edu"));
             if(schoolName.contains(".edu")) {
-                rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(!dataSnapshot.hasChild(schoolName)) {
-                            JSONObject object = new JSONObject();
-                            rootRef.child(schoolName).setValue(object);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(FirebaseError databaseError) {
-                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
-                        // ...
-                    }
-                });
-
+                schoolName = schoolName.substring(0, schoolName.indexOf('.'));
                 Intent i = new Intent(this, PetitionActivity.class);
                 i.putExtra("googleaccount", acct);
+                i.putExtra("schoolname", schoolName);
                 startActivity(i);
             }
 

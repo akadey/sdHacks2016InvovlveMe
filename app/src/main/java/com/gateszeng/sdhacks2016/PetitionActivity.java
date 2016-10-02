@@ -23,6 +23,7 @@ public class PetitionActivity extends AppCompatActivity {
 
     private String userName;
     private String userEmail;
+    private String userSchool;
     private String petitiondesc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +33,12 @@ public class PetitionActivity extends AppCompatActivity {
         GoogleSignInAccount acct = getIntent().getParcelableExtra("googleaccount");
         userName = acct.getDisplayName();
         userEmail = acct.getEmail();
+        userSchool = getIntent().getStringExtra("schoolname");
+
 
         // Get the petition description from the extra and set the text view's description
         petitiondesc = getIntent().getStringExtra("petitiondescription");
-        ((TextView)findViewById(R.id.petitiondescription)).setText(petitiondesc);
+        ((TextView)findViewById(R.id.petitiondescription)).setText(userSchool);
 
         // Wait to show layout until its loaded
         ((LinearLayout)findViewById(R.id.LL)).setVisibility(View.VISIBLE);
