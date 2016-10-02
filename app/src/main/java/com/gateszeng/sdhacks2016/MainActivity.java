@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Firebase currRef;
     ListView list;
     ArrayList<Petition> petitionArrayList;
-    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String MyPREFERENCES = "MyPrefs";
     String college;
 
     SharedPreferences sharedPreferences;
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         college = sharedPreferences.getString("college", "");
+        // Getting this from the data sent by loginactivity
+        college = getIntent().getStringExtra("schoolname");
         currRef = rootRef.child(college);
 
 
@@ -50,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 petitionArrayList.clear();
-                for(DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     petitionArrayList.add(postSnapshot.getValue(Petition.class));
                 }
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-                    Log.d("Error", "Load failed");
+                Log.d("Error", "Load failed");
             }
         });
 
@@ -69,13 +73,28 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Petition item = (Petition)parent.getItemAtPosition(position);
+                Petition item = (Petition) parent.getItemAtPosition(position);
 
                 Intent intent = new Intent(getApplicationContext(), InfoPetitionActivity.class);
                 intent.putExtra("key", item.getTime());
                 startActivity(intent);
             }
         });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoNewPetition();
+            }
+        });
+    }
+
+    private void gotoNewPetition() {
+        Intent i = new Intent(this, CreatePetitionActivity.class);
+        startActivity(i);
+    }
+}
 
 /*
         Class cl = Petition.class;
@@ -89,6 +108,5 @@ public class MainActivity extends AppCompatActivity {
         };
 */
 
-    }
-}
+
 

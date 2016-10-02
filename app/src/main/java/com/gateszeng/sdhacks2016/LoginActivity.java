@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -18,9 +22,13 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
+import org.json.JSONObject;
+
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,
     View.OnClickListener {
     public static final String MyPREFERENCES = "MyPrefs" ;
+
+
 
     private GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 9001;
@@ -28,10 +36,15 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     SharedPreferences sp;
 
+    Firebase rootRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Firebase.setAndroidContext(this);
+        rootRef = new Firebase("https://sdhacks2016-11cfe.firebaseio.com/");
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -81,19 +94,24 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Log.d("name", result.getSignInAccount().getDisplayName());
             GoogleSignInAccount acct = result.getSignInAccount();
 
-            
+            String schoolName = acct.getEmail().substring(acct.getEmail().indexOf('@') + 1);
+            Log.d(TAG, "LoginActivity: " + schoolName.contains(".edu"));
+            if(schoolName.contains(".edu")) {
+                schoolName = schoolName.substring(0, schoolName.indexOf('.'));
+                Intent i = new Intent(this, MainActivity.class);
+                i.putExtra("googleaccount", acct);
+                i.putExtra("schoolname", schoolName);
+                startActivity(i);
+            }
 
-            Intent i = new Intent(this, PetitionActivity.class);
-            i.putExtra("googleaccount", acct);
-            i.putExtra("petitiondescription", "test description@@@");
-            startActivity(i);
+
             //mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
             //updateUI(true);
         }
     }
 
     private String parseCollege(String email) {
-        String s = email.substring(email.indexOf('@')+1, email.indexOf('.'));
+        String s = email.substring(email.indexOf('@')+1);
         return s;
     }
 
@@ -108,26 +126,20 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             case R.id.sign_in_button:
                 signIn();
                 break;
-            case R.id.sign_out_button:
-              signOut();
-              break;
-            case R.id.disconnect_button:
-              revokeAccess();
-              break;
         }
     }
 
-    private void signOut() {
+    public void signOut(View v) {
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
-
+                        Log.d(TAG, "Signout: " + status);
                     }
                 });
     }
 
-    private void revokeAccess() {
+    public void revokeAccess(View v) {
         Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
