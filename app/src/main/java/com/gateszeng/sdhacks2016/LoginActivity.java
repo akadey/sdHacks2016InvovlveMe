@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Log.d(TAG, "LoginActivity: " + schoolName.contains(".edu"));
             if(schoolName.contains(".edu")) {
                 schoolName = schoolName.substring(0, schoolName.indexOf('.'));
-                Intent i = new Intent(this, PetitionActivity.class);
+                Intent i = new Intent(this, MainActivity.class);
                 i.putExtra("googleaccount", acct);
                 i.putExtra("schoolname", schoolName);
                 startActivity(i);

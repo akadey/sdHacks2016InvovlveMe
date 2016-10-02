@@ -4,7 +4,7 @@ package com.gateszeng.sdhacks2016;
  * Created by gates on 10/1/2016.
  */
 
-public class Petition {
+public class Petition<T> {
     private String title;
     private String description;
     private String creator;

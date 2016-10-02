@@ -28,7 +28,7 @@ public class PetitionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_petition);
+        //setContentView(R.layout.activity_petition);
 
         GoogleSignInAccount acct = getIntent().getParcelableExtra("googleaccount");
         userName = acct.getDisplayName();
