@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -21,9 +22,10 @@ public class InfoPetitionActivity extends AppCompatActivity {
     Firebase rootRef = new Firebase("https://sdhacks2016-11cfe.firebaseio.com/");
 
 
-    String key = "";
+    String key;
+    String title, description;
 
-    EditText petitionName, petitionDescription;
+    TextView petitionName, petitionDescription, author, votes;
     Button voteButton;
     String name, email, college;
     int voteNum = 0;
@@ -40,6 +42,15 @@ public class InfoPetitionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_petition);
         getActionBar().setDisplayShowTitleEnabled(false);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            key = extras.getString("key");
+        }
+
+        petitionName = (TextView) findViewById(R.id.petition_name);
+        petitionDescription = (TextView) findViewById(R.id.petition_description);
+        author = (TextView) findViewById(R.id.author);
+        votes = (TextView) findViewById(R.id.votes);
 
         voteButton = (Button) findViewById(R.id.submit_btn);
 
@@ -48,12 +59,16 @@ public class InfoPetitionActivity extends AppCompatActivity {
         email = sharedPreferences.getString("email", "");
         college = sharedPreferences.getString("college", "");
 
-        Firebase voteValueRef = rootRef.child(college).child(key).child("votes");
+        Firebase voteValueRef = rootRef.child(college).child(key);
 
         voteValueRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                voteNum = (int)snapshot.getValue();
+                Petition p = snapshot.getValue(Petition.class);
+                title = p.getTitle();
+                description = p.getDescription();
+                voteNum = p.getVotes();
+
             }
 
             @Override
@@ -72,6 +87,15 @@ public class InfoPetitionActivity extends AppCompatActivity {
             }
 
         });
+
+        updateViews();
+    }
+
+    private void updateViews() {
+        petitionName.setText(title);
+        petitionDescription.setText(description);
+        votes.setText(voteNum);
+        author.setText(name);
     }
 
 
