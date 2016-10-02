@@ -15,6 +15,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,
     View.OnClickListener {
@@ -78,8 +80,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Log.d("gmail", result.getSignInAccount().getEmail());
             Log.d("name", result.getSignInAccount().getDisplayName());
             GoogleSignInAccount acct = result.getSignInAccount();
-            Intent i = new Intent();
+
+            
+
+            Intent i = new Intent(this, PetitionActivity.class);
             i.putExtra("googleaccount", acct);
+            i.putExtra("petitiondescription", "test description@@@");
+            startActivity(i);
             //mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
             //updateUI(true);
         }
@@ -92,7 +99,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-
+        Log.d(TAG, "Connection failed: " + connectionResult);
     }
 
     @Override
@@ -101,12 +108,32 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             case R.id.sign_in_button:
                 signIn();
                 break;
-            //case R.id.sign_out_button:
-            //  signOut();
-            // break;
-            //case R.id.disconnect_button:
-            //  revokeAccess();
-            // break;
+            case R.id.sign_out_button:
+              signOut();
+              break;
+            case R.id.disconnect_button:
+              revokeAccess();
+              break;
         }
+    }
+
+    private void signOut() {
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+
+                    }
+                });
+    }
+
+    private void revokeAccess() {
+        Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+                        // ...
+                    }
+                });
     }
 }
