@@ -25,6 +25,8 @@ import com.firebase.ui.database.FirebaseListAdapter;
 
 import java.util.ArrayList;
 
+import static java.sql.Types.NULL;
+
 
 public class MainActivity extends AppCompatActivity {
     Firebase rootRef = new Firebase("https://sdhacks2016-11cfe.firebaseio.com/");
@@ -64,22 +66,24 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Error", "Load failed");
             }
         });
+        if (!petitionArrayList.isEmpty()) {
+            ArrayAdapter adapter = new ArrayAdapter(this, R.layout.activity_listview, petitionArrayList);
 
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.activity_listview, petitionArrayList);
+            ListView listView = (ListView) findViewById(R.id.petition_list);
+            listView.setAdapter(adapter);
 
-        ListView listView = (ListView) findViewById(R.id.petition_list);
-        listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Petition item = (Petition) parent.getItemAtPosition(position);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Petition item = (Petition) parent.getItemAtPosition(position);
+                    Intent intent = new Intent(getApplicationContext(), InfoPetitionActivity.class);
+                    intent.putExtra("key", item.getTime());
+                    startActivity(intent);
+                }
+            });
+        }
 
-                Intent intent = new Intent(getApplicationContext(), InfoPetitionActivity.class);
-                intent.putExtra("key", item.getTime());
-                startActivity(intent);
-            }
-        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

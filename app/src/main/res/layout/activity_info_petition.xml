@@ -17,7 +17,7 @@ android:orientation="vertical" >
     android:textSize="30sp"
     android:textStyle="bold"
     android:textColor="@color/colorAccent"
-    android:layout_width="113dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="left"
     android:id="@+id/petition_name" />
@@ -45,8 +45,7 @@ android:orientation="vertical" >
         android:textSize="20sp"
         android:textColor="@color/colorPrimary"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:gravity="bottom"
         android:id="@+id/author" />
 
@@ -66,10 +65,11 @@ android:orientation="vertical" >
 
 
     <Button
-    android:id="@+id/vote_btn"
-    android:text="I approve"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+        android:id="@+id/vote_btn"
+        android:text="I approve"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
 
