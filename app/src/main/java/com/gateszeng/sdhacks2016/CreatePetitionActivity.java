@@ -17,7 +17,7 @@ public class CreatePetitionActivity extends AppCompatActivity {
     Firebase rootRef = new Firebase("https://sdhacks2016-11cfe.firebaseio.com/");
     EditText petitionName, petitionDescription;
     Button submitButton;
-    String name, email;
+    String name, email, college;
 
     SharedPreferences sharedPreferences;
 
@@ -36,6 +36,7 @@ public class CreatePetitionActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         name = sharedPreferences.getString("name", "");
         email = sharedPreferences.getString("email", "");
+        college = sharedPreferences.getString("college", "");
 
 
         submitButton.setOnClickListener(new View.OnClickListener(){
@@ -50,6 +51,7 @@ public class CreatePetitionActivity extends AppCompatActivity {
     }
 
     private void pushToFirebase(Petition p) {
-       rootRef.push().setValue(p);
+        Firebase collegeRef = rootRef.child(college);
+        collegeRef.push().setValue(p);
     }
 }

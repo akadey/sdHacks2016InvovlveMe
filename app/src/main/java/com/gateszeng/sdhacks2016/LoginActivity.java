@@ -68,10 +68,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         Log.d(TAG, "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
+            parseCollege(result.getSignInAccount().getEmail());
 
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("name", result.getSignInAccount().getDisplayName());
             editor.putString("email", result.getSignInAccount().getEmail());
+            editor.putString("college", parseCollege(result.getSignInAccount().getEmail()));
             editor.commit();
             Log.d("gmail", result.getSignInAccount().getEmail());
             Log.d("name", result.getSignInAccount().getDisplayName());
@@ -81,6 +83,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             //mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
             //updateUI(true);
         }
+    }
+
+    private String parseCollege(String email) {
+        String s = email.substring(email.indexOf('@')+1, email.indexOf('.'));
+        return s;
     }
 
     @Override

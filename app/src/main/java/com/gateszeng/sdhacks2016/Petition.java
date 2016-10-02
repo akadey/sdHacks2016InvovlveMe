@@ -51,7 +51,7 @@ public class Petition {
         this.votes = votes;
     }
 
-    public int getTime() {
+    public long getTime() {
         return time;
     }
 
