@@ -1,13 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_profile_input"
+    android:id="@+id/activity_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.gateszeng.sdhacks2016.ProfileInputActivity">
+    android:orientation="vertical"
+    tools:context="com.gateszeng.sdhacks2016.ProfileActivity">
 
-</RelativeLayout>
+    <EditText
+        android:hint="First Name"
+        android:textSize="30sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/first_name" />
+
+    <EditText
+        android:hint="Last Name"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/last_name" />
+
+    <View style="@style/Big_HDivider" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/home_address_layout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home_black_24px" />
+
+        <View style="@style/VDivider" />
+
+        <EditText
+            android:hint="Home Address"
+            android:textSize="20sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/home_address" />
+
+    </LinearLayout>
+
+    <View style="@style/Big_HDivider" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/email_layout">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_local_post_office_black_24dp" />
+
+        <View style="@style/VDivider" />
+
+        <EditText
+            android:hint="Email Address"
+            android:textSize="20sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:id="@+id/email_address" />
+
+    </LinearLayout>
+
+    <View style="@style/Big_HDivider" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/home_phone_layout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_call_black_24dp" />
+
+        <View style="@style/VDivider" />
+
+        <EditText
+            android:hint="Home Phone"
+            android:textSize="20sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:id="@+id/home_phone" />
+
+    </LinearLayout>
+
+    <View style="@style/HDivider" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/cell_phone_layout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_stay_current_portrait_black_24dp" />
+
+        <View style="@style/VDivider" />
+
+        <EditText
+            android:hint="Cell Phone"
+            android:textSize="20sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:id="@+id/cell_phone" />
+
+    </LinearLayout>
+
+    <View style="@style/HDivider" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/work_phone_layout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_business_black_24dp" />
+
+        <View style="@style/VDivider" />
+
+        <EditText
+            android:hint="Work Phone"
+            android:textSize="20sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:id="@+id/work_phone" />
+
+    </LinearLayout>
+
+    <View style="@style/Big_HDivider" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:id="@+id/description_layout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_library_books_black_24dp" />
+
+        <View style="@style/VDivider" />
+
+        <EditText
+            android:hint="Description"
+            android:textSize="20sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            android:id="@+id/description" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
